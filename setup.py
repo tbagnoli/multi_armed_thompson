@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="thompson_sampling",
+    name="thompson_sampling_mab",
     version="0.1",
     license='MIT',
     author="Tullio Bagnoli",
