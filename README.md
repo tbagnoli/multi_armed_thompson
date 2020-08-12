@@ -14,9 +14,6 @@ Install requirements as:
 
     pip3 install -r requirements.txt
 
-(Note: these are only the packages necessary for the `Thompson` class,
-not the few additional ones used for plotting in the notebook.)
-
 ## Usage
 
 To initialize the class:
