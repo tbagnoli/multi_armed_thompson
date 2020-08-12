@@ -1,0 +1,19 @@
+# created by PyCharm
+.idea*
+
+# created by venv
+*_env
+
+# created by jupyter
+.ipynb_checkpoints*
+Icon*
+
+# created by mac os
+.DS_Store
+
+# created by Python 3
+__pycache__*
+
+# pypi packages (stored on nexus)
+dist/
+*.egg-info/
