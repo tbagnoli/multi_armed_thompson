@@ -25,10 +25,13 @@ class Thompson:
         :param steps: the iteration steps (optional, defaults to 1000)
         :param alpha_damping: reduces the tendency of TS towards exploitation (defaults to 1, no damping)
         :param beta_damping: reduces the tendency of TS towards exploration (defaults to 1, no damping)
-        :param alpha_init: an array of floats in the ]0, 1] interval, the initial conditions of each bandit
-        :param beta_init: an array of floats in the ]0, 1] interval, the initial conditions of each bandit
+        :param alpha_init: an array of non-negative floats, the initial conditions of each bandit
+            (defaults to 0, uniform priors)
+        :param beta_init: an array of non-negative floats, the initial conditions of each bandit
+            (defaults to 0, uniform priors)
         :param optimistic: whether to use an optimistic TS strategy, whereby a lower bound is put on sampling
-        :param optimistic_threshold: the lower bound for sampling in an optimistic strategy
+            (defaults to False)
+        :param optimistic_threshold: the lower bound for sampling in an optimistic strategy (defaults to 1.e-6)
         """
 
         # test validity of input variables
@@ -79,9 +82,9 @@ class Thompson:
             except AssertionError:
                 print("Arrays alpha_init and success_probs must have equal length")
             try:
-                assert np.all(alpha_init > 0)
+                assert np.all(alpha_init >= 0)
             except AssertionError:
-                print("Elements of array alpha_init must be > 0.")
+                print("Elements of array alpha_init must be >= 0.")
             self.alpha_init = alpha_init
 
         if beta_init is None:
@@ -92,9 +95,9 @@ class Thompson:
             except AssertionError:
                 print("Arrays beta_init and success_probs must have equal length")
             try:
-                assert np.all(beta_init > 0)
+                assert np.all(beta_init >= 0)
             except AssertionError:
-                print("Elements of array beta_init must be > 0.")
+                print("Elements of array beta_init must be >= 0.")
             self.beta_init = beta_init
 
         if optimistic is None:
@@ -143,7 +146,8 @@ class Thompson:
         :return: the bandit to draw
         """
         # randomly sample posterior distributions for each bandit
-        thetas = [np.random.beta(alpha_init + alpha, beta_init + beta)
+        thetas = [np.random.beta(1 + alpha_init + alpha,
+                                 1 + beta_init + beta)
                   for (alpha_init, alpha, beta_init, beta)
                   in zip(self.alpha_init, self.rewards.sum(axis=1),
                          self.beta_init, self.penalties.sum(axis=1))]

@@ -28,9 +28,9 @@ plus the following optional parameters:
 * `steps`: the number of steps to iterate over, defaults to 1000.
 * `alpha_damping`: reduces the tendency of TS towards exploitation (defaults to 1, no damping)
 * `beta_damping`: reduces the tendency of TS towards exploration (defaults to 1, no damping)
-* `alpha_init`: an array of positive floats, sets the initial conditions for the prior distribution of each bandit
+* `alpha_init`: an array of non-negative floats, sets the initial conditions for the prior distribution of each bandit
     (defaults to 0, uniform priors)
-* `beta_init`: an array of positive floats, sets the initial conditions for the prior distribution of each bandit
+* `beta_init`: an array of non-negative floats, sets the initial conditions for the prior distribution of each bandit
     (defaults to 0, uniform priors)
 * `optimistic`: whether to use an optimistic TS strategy, whereby a lower bound is put on sampling
     (defaults to False)
