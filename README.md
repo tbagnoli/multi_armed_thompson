@@ -18,12 +18,22 @@ Install requirements as:
 
 To initialize the class:
 
-    ts = Thompson(success_probs, steps)
+    ts = Thompson(success_probs)
 
 where
-* `success_probs`: an array of floats in the \[0, 1\] interval,
+* `success_probs`: an array of floats in the [0, 1] interval,
     the success probability of each bandit;
-* `steps`: the number of steps to iterate over (optional, defaults to 1000).
+    
+plus the following optional parameters: 
+* `steps`: the number of steps to iterate over, defaults to 1000.
+* `alpha_damping`: reduces the tendency of TS towards exploitation (defaults to 1, no damping)
+* `beta_damping`: reduces the tendency of TS towards exploration (defaults to 1, no damping)
+* `alpha_init`: an array of floats in the ]0, 1] interval,
+    sets the initial conditions for the prior distribution of each bandit
+* `beta_init`: an array of floats in the ]0, 1] interval,
+    sets the initial conditions for the prior distribution of each bandit
+* `optimistic`: whether to use an optimistic TS strategy, whereby a lower bound is put on sampling
+* `optimistic_threshold`: the lower bound for sampling in an optimistic strategy 
 
 ## Theory recap
 
