@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="multi_armed_thompson",
-    version="0.2",
+    version="0.2.1",
     license='MIT',
     author="Tullio Bagnoli",
     author_email="tullio.bagnoli@protonmail.com",
