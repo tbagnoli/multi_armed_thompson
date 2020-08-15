@@ -16,6 +16,10 @@ Install requirements as:
 
 ## Usage
 
+Import class as
+
+    from thompson_sampling.thompson_sampling import Thompson
+    
 To initialize the class:
 
     ts = Thompson(success_probs)

@@ -16,4 +16,5 @@ __pycache__*
 
 # pypi packages (stored on nexus)
 dist/
+build/
 *.egg-info/
